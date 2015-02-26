@@ -1,10 +1,12 @@
-Installing MobileAppTracking iOS SDK using CocoaPods
+Installing PHG Mobile Tracking iOS SDK using CocoaPods
+=======
+Please note this SDK is undergoing pre-release testing at present.
 =======
 
-[CocoaPods: The Objective-C Library Manager](http://www.cocoapods.org) allows you to manage the library dependencies of your iOS Xcode project. 
-You can use CocoaPods to install MobileAppTracking iOS SDK and required system frameworks.
+[CocoaPods: The Objective-C Library Manager](http://www.cocoapods.org) allows you to manage the library dependencies of your iOS Xcode project.
+You can use CocoaPods to install PHG Mobile Tracking iOS SDK and required system frameworks.
 
-## Steps to include MobileAppTracking (MAT) iOS SDK to your iOS Xcode project
+## Steps to include PHG Mobile Tracking iOS SDK to your iOS Xcode project
 
 ### Install CocoaPods
 
@@ -13,15 +15,15 @@ If you have already installed CocoaPods then you can skip this step.
 $ [sudo] gem install cocoapods
 $ pod setup
 
-### Install MobileAppTracker pod
+### Install PHG MobileTracking pod
 
-Once CocoaPods has been installed, you can include MAT iOS SDK to your project by adding a dependency entry to the Podfile in your project root directory.
+Once CocoaPods has been installed, you can include PHG Mobile Tracking iOS SDK to your project by adding a dependency entry to the Podfile in your project root directory.
 
 $ edit Podfile
 platform :ios
 pod 'PHGMobileTracking'
 
-This sample shows a minimal Podfile that you can use to include MAT iOS SDK dependency to your project. You can include any other dependency as required by your project.
+This sample shows a minimal Podfile that you can use to include PHG Mobile Tracking iOS SDK dependency to your project. You can include any other dependency as required by your project.
 
 Now you can install the dependencies in your project:
 
@@ -35,4 +37,4 @@ Now you can import MobileAppTracker in your source files:
 
 #import <PHGMobileTrackingService.h>
 
-At this point MAT iOS SDK is ready for use in your project.
+At this point PHG Mobile Tracking iOS SDK is ready for use in your project.
