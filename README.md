@@ -33,7 +33,7 @@ Once you install a pod dependency in your project, make sure to always open the 
 
 $ open App.xcworkspace
 
-Now you can import MobileAppTracker in your source files:
+Now you can import PHG Mobile Tracking in your source files:
 
 #import <PHGMobileTrackingService.h>
 
