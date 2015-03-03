@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "PHGMobileTracking"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "SDK for PHG's mobile tracking service."
   s.description  = "SDK for tracking installs and events using PHG's mobile tracking service."
   s.homepage     = "https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod"
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.dependency 'Reachability', '~> 3.2'
   s.frameworks = 'UIKit', 'SystemConfiguration'
 
-  s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "\"$(PODS_ROOT)/PHGMobileTracking\"" }
-  #s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "~/Development/PerformanceHorizon/mobile-iOS/shared/mobiletracking-cocoapod" }
+  #s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "\"$(PODS_ROOT)/PHGMobileTracking\"" }
+  s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "~/Development/PerformanceHorizon/mobile-iOS/shared/mobiletracking-cocoapod" }
 
 end

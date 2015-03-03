@@ -8,6 +8,19 @@
 
 #import <Foundation/Foundation.h>
 @class PHGMobileTrackingEvent;
+@class PHGMobileTrackingService;
+
+
+/**
+ PHGMobileTrackingServiceDegelate provides feedback for state changes in the mobile tracking service.
+ */
+@protocol PHGMobileTrackingServiceDegelate <NSObject>
+
+/**
+ the mobile tracking service is now fully initialised.  A install will have been recorded, if appropriate.
+ */
+- (void) PHGMobileTrackingServiceDidInitialise:(PHGMobileTrackingService*)service;
+@end
 
 
 /** 
@@ -51,5 +64,7 @@
  @param Event - the event
  */
 - (void) trackEvent:(PHGMobileTrackingEvent*)event;
+
+@property(nonatomic, retain) id<PHGMobileTrackingServiceDegelate> delegate;
 
 @end
