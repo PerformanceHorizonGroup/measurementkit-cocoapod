@@ -10,7 +10,6 @@
 @class PHGMobileTrackingEvent;
 @class PHGMobileTrackingService;
 
-
 /**
  PHGMobileTrackingServiceDegelate provides feedback for state changes in the mobile tracking service.
  */
@@ -20,11 +19,18 @@
  the mobile tracking service is now fully initialised.  A install will have been recorded, if appropriate.
  */
 - (void) PHGMobileTrackingServiceDidInitialise:(PHGMobileTrackingService*)service;
+
+/**
+ A deep link has been recovered from the click by the mobile tracking service.  If the delegate doesn't intervene,
+ it be passed to the application delegate via - application:openURL:sourceApplication:annotation:
+ @return BOOL - if true, deep link will be opened.
+ */
+- (BOOL) PHGMobileTrackingServiceWillOpenDeepLink:(NSURL*)deepLinkUrl;
 @end
 
 
 /** 
- PHGMobileTrackingService provides an interface to PHGMobile tracking service, and provides methods to set up the service and track events
+ PHGMobileTrackingService provides an interface to PHG Mobile Tracking service, and provides methods to set up the service and track events
  */
 @interface PHGMobileTrackingService : NSObject
 
@@ -50,7 +56,7 @@
  @param advertiserID The advertiser identifier provided by PHG (See Admin-Advertiser)
  @param campaignID The campaign identifier provided by PHG (See Admin-Campaign)
  */
-- (void) initialiseTrackingWithAdvertiserID:(NSString*)advertiserID andCampaignID:(NSString*)campaignID;
+- (void) startTrackingWithAdvertiserID:(NSString*)advertiserID andCampaignID:(NSString*)campaignID;
 
 /**
  sets a global tracking property.
@@ -66,5 +72,6 @@
 - (void) trackEvent:(PHGMobileTrackingEvent*)event;
 
 @property(nonatomic, retain) id<PHGMobileTrackingServiceDegelate> delegate;
+
 
 @end
