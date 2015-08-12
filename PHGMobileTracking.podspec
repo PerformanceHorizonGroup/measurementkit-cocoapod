@@ -22,7 +22,5 @@ Pod::Spec.new do |s|
   s.dependency 'Reachability', '~> 3.2'
   s.frameworks = 'UIKit', 'SystemConfiguration', 'Security'
 
-  #s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "\"$(PODS_ROOT)/PHGMobileTracking\"" }
-  s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "~/Development/PerformanceHorizon/mobile-iOS/shared/mobiletracking-cocoapod" }
-
+  s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "\"$(PODS_ROOT)/PHGMobileTracking\"" }
 end
