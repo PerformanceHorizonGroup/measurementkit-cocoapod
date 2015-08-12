@@ -16,11 +16,9 @@ Pod::Spec.new do |s|
 
   s.source_files  = "*.h"
   s.preserve_path = "*.a"
-  s.libraries = "PHGMobileTracking-pod"
-  s.source       = { :git => "https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git", :tag => "0.0.1" }
+  s.vendored_library  = "libPHGMobileTracking-pod.a"
+  s.source       = { :git => "https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git", :tag => '0.1.16'}
 
   s.dependency 'Reachability', '~> 3.2'
   s.frameworks = 'UIKit', 'SystemConfiguration', 'Security'
-
-  s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "\"$(PODS_ROOT)/PHGMobileTracking\"" }
 end
