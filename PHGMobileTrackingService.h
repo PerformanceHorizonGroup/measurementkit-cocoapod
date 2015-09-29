@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class UIApplication;
 @class PHGMobileTrackingEvent;
 @class PHGMobileTrackingService;
 
@@ -70,6 +71,14 @@
  @param Event - the event
  */
 - (void) trackEvent:(PHGMobileTrackingEvent*)event;
+
+/**
+ captures a mobile tracking id encoded in a deep link for future use by mobile tracking, and returns
+ the original deep-link
+ @param deepLink - the deep link URL;
+ @return the deep link with the mobile tracking id removed from the URL.
+ */
+- (NSURL*) processDeepLinkWithURL:(NSURL*)deepLink;
 
 @property(nonatomic, retain) id<PHGMobileTrackingServiceDegelate> delegate;
 
