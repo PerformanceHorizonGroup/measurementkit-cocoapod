@@ -1,47 +1,70 @@
-Installing PHG Mobile Tracking iOS SDK using CocoaPods
-=======
-Please note this SDK is undergoing pre-release testing at present.
-=======
+![PHG Icon](http://performancehorizon.com/img/logo-on-white.svg)
 
-[CocoaPods: The Objective-C Library Manager](http://www.cocoapods.org) allows you to manage the library dependencies of your iOS Xcode project.
-You can use CocoaPods to install PHG Mobile Tracking iOS SDK and required system frameworks.
+# PHG iOS SDK
+#### Overview
 
-## Steps to include PHG Mobile Tracking iOS SDK to your iOS Xcode project
+The PHG SDK facilitates initital user registration and event logging from within your app. Simply download the SDK, add into your app, and you can begin to track a wide variety of actions to the PHG tracking API.
 
-### Install CocoaPods
+### Installation
 
-If you have already installed CocoaPods then you can skip this step.
-```
-$ [sudo] gem install cocoapods
-$ pod setup
-```
-### Install PHG MobileTracking pod
+There are a number of options for integrating the iOS SDK into your project.  The preferred method is via Cocoapods (see <https://cocoapods.org/>).
 
-Once CocoaPods has been installed, you can include PHG Mobile Tracking iOS SDK to your project by adding a dependency entry to the Podfile in your project root directory.
+#### CocoaPods
 
-```
-platform :ios
-pod 'PHGMobileTracking'
-```
+To install, add the following lines to your Podfile:
 
-This sample shows a minimal Podfile that you can use to include PHG Mobile Tracking iOS SDK dependency to your project. You can include any other dependency as required by your project.
+	pod 'PHGMobileTracking', :git => ‘https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git'
 
-Now you can install the dependencies in your project:
+Then use the pod install command to download and install the library in your Xcode project.
 
-```
-$ pod install
-```
+#### Library
 
-Once you install a pod dependency in your project, make sure to always open the Xcode workspace instead of the project file when building your project:
+The static library libPHGMobileTracking-pod.a and it’s associated header files, PHGMobileTrackingEvent, PHGMobileTrackingSale, and PHGMobileTrackingService can also be directly imported into an Xcode project.  The library can be obtained by cloning the mobile tracking repository: <https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git>
 
-```
-$ open App.xcworkspace
-```
+### Implementing
+#### Configuration
 
-Now you can import PHG Mobile Tracking in your source files:
+Import `<PHGMobileTracking/PHGMobileTrackingService.h>` into your `AppDelegate.m`, and initialise.
 
-```
-#import <PHGMobileTrackingService.h>
-```
+	#import <PHGMobileTracking/PHGMobileTrackingService.h>
+	
+	- (void)applicationDidBecomeActive:(UIApplication *)application
+	{ 
+		//Apple Identifier for Advertisers (IFA) passthrough, enabling accurate tracking 
+		[PHGMobileTrackingService trackingInstance].idfa = [[ASIdentifierManager 		   		sharedManager] advertisingIdentifier];
+	
+		[[PHGMobileTrackingService trackingInstance] 			  	initialiseTrackingWithAdvertiserID:@"phg_advertiser_id" 										     andCampaignID:@"phg_campaign_id"];
+	}
 
-At this point PHG Mobile Tracking iOS SDK is ready for use in your project.
+You will receive your unique PHG Advertiser ID and Campaign ID when you are registered within the PHG platform. It is important to note that an Advertiser account can have multiple Campaigns (apps).
+
+####Tracking Methods
+The PHG SDK offers a generic event method to register dynamic actions, but there are also some pre-defined event types which can have specific report views associated with them in the PHG ExactView platform. These pre-defined events range from simple actions like installs and registrations, through to paid actions such as in-app purchases.
+
+#####Registration
+The registration call captures a user registering within the app. An optional `user_id` can be passed.
+
+    PHGMobileTrackingEvent* event = [[PHGMobileTrackingEvent alloc] initWithEventTag:@"Registration"];
+	[event addEventInformationWithKey:@"custref" andValue:@"user_id"];
+	[[PHGMobileTrackingService trackingInstance] trackEvent:event];
+
+####Event
+Any action within an app, which involves a single event, can be captured using a dynamic `EventTag` identifier with an optional `currency`/`value` combination if there's a cost associated with the action, and this can also reference a unique transaction identifier `conversionref`.
+
+	PHGMobileTrackingEvent* event = [[PHGMobileTrackingEvent alloc] initWithEventTag:@"Premium"];
+	[[PHGMobileTrackingService trackingInstance] trackEvent:event];
+
+	// Conversion information
+	[event addEventInformationWithKey:@"currency"
+	andValue:@"iso_3_letter_currency"];
+
+	[event addEventInformationWithKey:@"value" andValue:@"decimal"];
+	[event addEventInformationWithKey:@"conversionref" andValue:@“order_id"];
+
+####Purchase
+A purchase is an event which includes more than one item, for example a paid transaction which includes multiple items within the order. `currency` and `conversionref` is referenced in combination with an array of items, which must include a `category` to describe the type of item, and `value` which is the net cost of a single unit. These item level attributes can be accompanied with an optional `sku` value to reference the unique item code and `quantity` for calculating multiple instances of the same item.
+
+	PHGMobileTrackingEvent* event = [[PHGMobileTrackingEvent alloc] initWithEventTag:@"Purchase"];
+	[event addEventInformationWithKey:@"conversionref" andValue:@“order_id"];
+
+	[event addSales: @[[PHGMobileTrackingSale saleWithCategory:@"album" value:@(9.99) sku:@"829983" andQuantity:1], [PHGMobileTrackingSale saleWithCategory:@"single" value:@(0.99) sku:@"973723" andQuantity:1]] ofCurrency:@"currency_iso_string"];
