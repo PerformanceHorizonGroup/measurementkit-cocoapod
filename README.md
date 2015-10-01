@@ -13,7 +13,7 @@ There are a number of options for integrating the iOS SDK into your project.  Th
 
 To install, add the following lines to your Podfile:
 
-	pod 'PHGMobileTracking', :git => ‘https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git'
+	pod 'PHGMobileTracking'
 
 Then use the pod install command to download and install the library in your Xcode project.
 
