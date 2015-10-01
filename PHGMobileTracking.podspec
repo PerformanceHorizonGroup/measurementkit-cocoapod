@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "PHGMobileTracking"
-s.version      = "0.2.0"
+s.version      = "0.2.1"
 s.summary      = "SDK for PHG's mobile tracking service."
 s.description  = "SDK for tracking installs and events using PHG's mobile tracking service."
 s.homepage     = "https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod"
