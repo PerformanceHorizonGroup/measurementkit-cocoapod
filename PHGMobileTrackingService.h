@@ -23,8 +23,8 @@
 
 /**
  A deep link has been recovered from the click by the mobile tracking service.  If the delegate doesn't intervene,
- it be passed to the application delegate via - application:openURL:sourceApplication:annotation:
- @return BOOL - if true, deep link will be opened.
+ it be passed to the application delegate via the version-appropriate application:openURL method.
+ @return BOOL if true, deep link will be opened.
  */
 - (BOOL) PHGMobileTrackingServiceWillOpenDeepLink:(NSURL*)deepLinkUrl;
 @end
@@ -32,11 +32,14 @@
 
 /** 
  PHGMobileTrackingService provides an interface to PHG Mobile Tracking service, and provides methods to set up the service and track events
+ 
+ Please note this service is in Beta.
+ Use requires the user be configured as an advertiser in Performace Horizon's affiliate tracking platform.
  */
 @interface PHGMobileTrackingService : NSObject
 
 /**
- additional tracking information can be gained via execution of javascript in a headless webview (Active Fingerprinting).  However, as this has performance implications (the webview must be created on the main thread), it is optional.  Please note, however, the accuracy of matches will be reduced if active fingerprints are disabled.  Defaults to false.
+ additional tracking accuracy can be gained via execution of javascript in a headless webview (Active Fingerprinting).  However, as this has performance implications (the webview must be created on the main thread), it is optional. Defaults to false.
  */
 @property(nonatomic, assign) BOOL shouldActiveFingerPrint;
 
@@ -49,6 +52,7 @@
 
 /** 
  returns singleton instance of tracking service.
+ @return the shared instance of the tracking service
  */
 + (instancetype) trackingInstance;
 
@@ -58,13 +62,6 @@
  @param campaignID The campaign identifier provided by PHG (See Admin-Campaign)
  */
 - (void) startTrackingWithAdvertiserID:(NSString*)advertiserID andCampaignID:(NSString*)campaignID;
-
-/**
- sets a global tracking property.
- @param key Key for the property.
- @param value The property object.
- */
-- (void) setTrackingPropertyWithKey:(NSString*)key andValue:(NSObject*)value;
 
 /**
  tracks The given event
@@ -80,6 +77,9 @@
  */
 - (NSURL*) processDeepLinkWithURL:(NSURL*)deepLink;
 
+/**
+ *  delegate to receive tracking service-related events.
+ */
 @property(nonatomic, retain) id<PHGMobileTrackingServiceDegelate> delegate;
 
 

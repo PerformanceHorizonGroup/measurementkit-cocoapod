@@ -67,14 +67,6 @@
 @property(retain, readonly) NSString* category;
 
 /**
- add arbitrary data to an event.  An example of this might be a username associated with a registration event.
- @param key identifier for the data
- @param value data to associate with the event.
- @warning please note this data will be encoded in transit using the objects [description].
- */
-- (void) addEventInformationWithKey:(NSString*)key andValue:(NSString*)value;
-
-/**
  add sale (PHG usually terms this a conversion item) to an event.
  @param sale A sale
  @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place.
