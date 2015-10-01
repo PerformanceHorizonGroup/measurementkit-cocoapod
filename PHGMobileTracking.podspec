@@ -17,7 +17,7 @@ s.platform     = :ios, "7.1"
 s.source_files  = "*.h"
 s.preserve_path = "*.a"
 s.vendored_library  = "libPHGMobileTracking-pod.a"
-s.source       = { :git => "https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git", :tag => '0.1.16'}
+s.source       = { :git => "https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git", :tag => "0.2.1"}
 
 s.dependency 'Reachability', '~> 3.2'
 s.frameworks = 'UIKit', 'SystemConfiguration', 'Security'
