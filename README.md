@@ -37,8 +37,10 @@ Import `<PHGMobileTracking/PHGMobileTrackingService.h>` into your `AppDelegate.m
 	
 	- (void)applicationDidBecomeActive:(UIApplication *)application
 	{ 
-	
-		[[PHGMobileTrackingService trackingInstance] initialiseTrackingWithAdvertiserID:@"phg_advertiser_id" 										     andCampaignID:@"phg_campaign_id"];
+		NSString* phg_advertiser_id = @"advertiser_id";
+		NSString* phg_campaign_id = @"campaign_to_be_tracked";
+
+		[[PHGMobileTrackingService trackingInstance] startTrackingWithAdvertiserID:phg_advertiser_id andCampaignID:phg_campaign_id];
 	}
 
 You will receive your unique PHG Advertiser ID and Campaign ID when you are registered within the Performance Horizon platform. It is important to note that an Advertiser account can have multiple Campaigns (apps).
