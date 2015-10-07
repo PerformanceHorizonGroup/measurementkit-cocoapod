@@ -1,6 +1,6 @@
 //
-//  PHGMobileTrackingSale.h
-//  PHGMobileTracking
+//  PHNSale.h
+//  PHNMeasurementKit
 //
 //  Created by Owain Brown on 25/02/2015.
 //
@@ -10,11 +10,11 @@
 
 
 /**
- PHGMobileTracking sale represents a conversion item which forms part of an event.  
+ PHNSale represents a conversion item which forms part of an event.
  
  An example of this might be a paid registration, or a purchase.
  */
-@interface PHGMobileTrackingSale : NSObject
+@interface PHNSale : NSObject
 
 /**
  initialises with catagory and value

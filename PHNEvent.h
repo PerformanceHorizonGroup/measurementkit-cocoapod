@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class PHGMobileTrackingSale;
+@class PHNSale;
 
 /**
- PHGMobileTrackingEvent represents an event tracked by the mobile tracking service.
+ PHNEvent represents an event tracked by the mobile measurement service.
  Examples could include registration, purchases or upgrades.
  */
-@interface PHGMobileTrackingEvent : NSObject
+@interface PHNEvent : NSObject
 
 /**
  initialize event with given category.
@@ -29,7 +29,7 @@
  @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place
  @return The initialized event
  */
-- (instancetype) initWithSale:(PHGMobileTrackingSale*)sale ofCurrency:(NSString*)currencyCode;
+- (instancetype) initWithSale:(PHNSale*)sale ofCurrency:(NSString*)currencyCode;
 
 /**
  initialize event with given sales.
@@ -51,7 +51,7 @@
  @param sale The associated sale
  @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place
  */
-+ (instancetype) eventWithSale:(PHGMobileTrackingSale*)sale ofCurrency:(NSString*)currencyCode;
++ (instancetype) eventWithSale:(PHNSale*)sale ofCurrency:(NSString*)currencyCode;
 
 /**
  convenience initializer for with given sales.
@@ -72,7 +72,7 @@
  @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place.
  @warning will overwrite any currently attached sales, if present.
  */
-- (void) addSale:(PHGMobileTrackingSale*)sale ofCurrency:(NSString*)currencyCode;
+- (void) addSale:(PHNSale*)sale ofCurrency:(NSString*)currencyCode;
 
 /**
  add array of sales to an event.
