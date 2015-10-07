@@ -13,7 +13,7 @@ There are a number of options for integrating the iOS SDK into your project.  Th
 
 To install, add the following lines to your Podfile:
 
-	pod 'PHGMobileTracking', :git => ‘https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git'
+pod 'PHGMobileTracking', :git => ‘https://github.com/PerformanceHorizonGroup/mobiletracking-cocoapod.git'
 
 Then use the pod install command to download and install the library in your Xcode project.
 
@@ -31,14 +31,18 @@ You'll need to be set up as a advertiser within Performance Horizon's affiliate 
 
 Whether you're tracking installs or deep links, you'll need to initialise the mobile tracking SDK with your advertiser ID, and the campaign ID you'll be using for your mobile tracking links.
 
-Import `<PHGMobileTracking/PHGMobileTrackingService.h>` into your `AppDelegate.m`, and add the following 
+Import `<PHGMobileTracking/PHGMobileTrackingService.h>` into your `AppDelegate.m`, and add the following
 
 	#import <PHGMobileTracking/PHGMobileTrackingService.h>
-	
+
 	- (void)applicationDidBecomeActive:(UIApplication *)application
-	{ 
-	
-		[[PHGMobileTrackingService trackingInstance] initialiseTrackingWithAdvertiserID:@"phg_advertiser_id" 										     andCampaignID:@"phg_campaign_id"];
+	{
+
+		NSString* phg_advertiser_id = @"advertiser_id";
+		NSString* phg_campaign_id = @"campaign_to_be_tracked";
+
+		[[PHGMobileTrackingService trackingInstance] startTrackingWithAdvertiserID:phg_advertiser_id andCampaignID:phg_campaign_id];
+
 	}
 
 You will receive your unique PHG Advertiser ID and Campaign ID when you are registered within the Performance Horizon platform. It is important to note that an Advertiser account can have multiple Campaigns (apps).
@@ -52,16 +56,16 @@ The mobile tracking API appends a mobile tracking identifer to deep links (uris 
 	    // if you're processing the URI for routing in this method
 	    // and you'd prefer the mobile tracking API additions removed,
 	    // the output of this method is the original URI.
-	    
+
 	    NSURL* originaluri = [[PHGMobileTrackingService trackingInstance] processDeepLinkWithURL:url];
-	    
+
 	    //some routing, handling, etc....
-	    
+
 	    return YES;
 	}
-	
+
 ###Tracking Events
-	
+
 #### Mobile tracking instance
 
 A static instance of the mobile tracking service is provided for convenience.
@@ -76,22 +80,22 @@ The most basic form of event has no value associated with it.  (Perhaps an in-ap
 
 The `category` parameter is used to set the `product` conversions.
 
-	PHGMobileTrackingEvent* event = [[PHGMobileTrackingService trackingInstance] trackEvent:[PHGMobileTrackingEvent eventWithCategory:@"registration-initiated"]];    
+	PHGMobileTrackingEvent* event = [[PHGMobileTrackingService trackingInstance] trackEvent:[PHGMobileTrackingEvent eventWithCategory:@"registration-initiated"]];
 
 #####Sales
 If an event has a value you'd like to track, sales can be associated with an event as follows.
 
 The `currency` parameter is a ISO 4217 currency code.  (eg, USD, GBP)
 
-	
-	//an example event with a single sale attached.	PHGMobileTrackingEvent *registration = [PHGMobileTrackingEvent eventWithSale:[PHGMobileTrackingSale saleWithCategory:@"registration-complete" andValue:@(0.1)] ofCurrency:@"USD"];    
+
+	//an example event with a single sale attached.	PHGMobileTrackingEvent *registration = [PHGMobileTrackingEvent eventWithSale:[PHGMobileTrackingSale saleWithCategory:@"registration-complete" andValue:@(0.1)] ofCurrency:@"USD"];
     [[PHGMobileTrackingService trackingInstance] trackEvent:registration];
-           
+
     //now one with several.....
     PHGMobileTrackingEvent *purchases = [PHGMobileTrackingEvent eventWithSales:@[[PHGMobileTrackingSale saleWithCategory:@"premium-upgrade" andValue:@(0.1)], [PHGMobileTrackingSale saleWithCategory:@"song-purchase" value:@(3.2) sku:@"biffyclyro-12" andQuantity:1]] ofCurrency:@"USD"];
 	[[PHGMobileTrackingService trackingInstance] trackEvent:purchases];
 
-`sku` and `quantity` are optional sales parameters.  
+`sku` and `quantity` are optional sales parameters.
 
 ###Performance
 
