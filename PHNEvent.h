@@ -67,7 +67,7 @@
 @property(retain, readonly) NSString* category;
 
 /**
- add sale (PHG usually terms this a conversion item) to an event.
+ add sale (PH usually terms this a conversion item) to an event.
  @param sale A sale
  @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place.
  @warning will overwrite any currently attached sales, if present.
@@ -76,7 +76,7 @@
 
 /**
  add array of sales to an event.
- @param sales NSArray of sales
+ @param sales NSArray of sales (PHNSale)
  @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place.
   @warning will overwrite any currently attached sales, if present.
  */
