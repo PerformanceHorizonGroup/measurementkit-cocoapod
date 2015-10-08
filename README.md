@@ -3,7 +3,7 @@
 # Measurement Kit iOS SDK
 #### Overview
 
-The Perfomance Horizon Measurement Kit facilitates install and event tracking from within your app, as part of the performance marketing service provided by .  Simply add the SDK to your app, and you can begin to track a wide variety of actions with  Perfomance Horizon's tracking API.
+Measurement Kit facilitates install and event tracking from within your app, as part of Performance Horizon's performance marketing service.  Simply add the SDK to your app, and you can begin to track a wide variety of actions with  Perfomance Horizon's tracking API.
 
 ### Installation
 
