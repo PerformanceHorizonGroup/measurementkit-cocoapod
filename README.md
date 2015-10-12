@@ -27,9 +27,9 @@ The static library libPHNMeasurementKit-pod.a and it’s associated umbrella hea
 
 You'll need to be set up as a advertiser within Performance Horizon's affiliate tracking platform, with a campaign prepared.  Please contact support for any further guidance.
 
-#### Initialise mobile tracking
+#### Initialise MeasurementKit
 
-Whether you're tracking installs or deep links, you'll need to initialise the mobile tracking SDK with your advertiser ID, and the campaign ID you'll be using for your mobile tracking links.
+Whether you're tracking installs, other events,  or deep links, you'll need to initialise the SDK with your advertiser ID, and the campaign ID you'll be using for your mobile tracking links.
 
 Import `<PHNMeasurementKit/PHNMeasurementService.h>` into your `AppDelegate.m`, and add the following
 
