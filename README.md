@@ -80,7 +80,7 @@ The most basic form of event has no value associated with it.  (Perhaps an in-ap
 
 The `category` parameter is used to set the `product` conversions.
 
-	PHGMobileTrackingEvent* event = [[PHNMeasurementService sharedInstance] trackEvent:[PHNEvent eventWithCategory:@"registration-initiated"]];
+	PHNEvent* event = [[PHNMeasurementService sharedInstance] trackEvent:[PHNEvent eventWithCategory:@"registration-initiated"]];
 
 #####Sales
 If an event has a value you'd like to track, sales can be associated with an event as follows.
