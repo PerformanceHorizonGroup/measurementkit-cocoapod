@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class PHNSale;
 
 /**
@@ -54,32 +56,19 @@
 + (instancetype) eventWithSale:(PHNSale*)sale ofCurrency:(NSString*)currencyCode;
 
 /**
- convenience initializer for with given sales.
+ convenience initializer for event with given sales.
  @param sales The associated set of sales
  @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place
  @return The initialized event
  */
 + (instancetype) eventWithSales:(NSArray*)sales ofCurrency:(NSString*)currencyCode;
-
 /**
  category of the event (corresponds to product in the exactview console interface.)
  */
-@property(retain, readonly) NSString* category;
-
-/**
- add sale (PH usually terms this a conversion item) to an event.
- @param sale A sale
- @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place.
- @warning will overwrite any currently attached sales, if present.
- */
-- (void) addSale:(PHNSale*)sale ofCurrency:(NSString*)currencyCode;
-
-/**
- add array of sales to an event.
- @param sales NSArray of sales (PHNSale)
- @param currencyCode ISO-4217 (3-letter) currency code in which the sale takes place.
-  @warning will overwrite any currently attached sales, if present.
- */
-- (void) addSales:(NSArray*)sales ofCurrency:(NSString*)currencyCode;
+@property(retain, readonly) NSString* _Nullable category;
+@property(retain, readonly) NSArray<PHNSale*>* _Nullable sales;
+@property(retain, readonly) NSString* _Nullable salesCurrency;
 
 @end
+
+NS_ASSUME_NONNULL_END

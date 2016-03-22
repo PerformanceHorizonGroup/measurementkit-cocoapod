@@ -12,5 +12,6 @@
 #import <PHNMeasurementKit/PHNMeasurementService.h>
 #import <PHNMeasurementKit/PHNEvent.h>
 #import <PHNMeasurementKit/PHNSale.h>
+#import <PHNMeasurementKit/PHNMeasurementServiceConfiguration.h>
 
 #endif /* PRFMeasurementKit */
