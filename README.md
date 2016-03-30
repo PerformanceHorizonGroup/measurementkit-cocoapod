@@ -49,7 +49,7 @@ You will receive your unique PHG Advertiser ID and Campaign ID when you are regi
 
 #### Initialise from Deep link
 
-The mobile tracking API appends a mobile tracking identifer to deep links (urls from from the app's scheme or universal links).  If you're using deep links in your app, add the following to method to  `application:openURL:options:` in your application delegate.
+The mobile tracking API appends a mobile tracking identifer to deep links (urls from from the app's scheme or universal links).  Add the following to method to  `application:openURL:options:` in your application delegate.
 
 	- (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 	{
