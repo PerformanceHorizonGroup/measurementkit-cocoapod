@@ -12,6 +12,8 @@
 #import "PHNMeasurementServiceInternal.h"
 #import "PHNMeasurementServiceConfiguration.h"
 #import "PHNEvent.h"
+#import "PHNConversion.h"
+#import "PHNAppClick.h"
 
 #import <objc/runtime.h>
 
@@ -63,21 +65,6 @@ static void _replacement_Track_Event(id self, SEL _cmd, NSString* event, NSDicti
         _service = [[PHNMeasurementServiceInternal alloc] initWithConfiguration:config];
     }
     
-    /*if (config.trackMixpanelEvents) {
-        
-        Class mixpanel = NSClassFromString(@"Mixpanel");
-        SEL original = @selector(track:properties:);
-        
-        Method method = class_getInstanceMethod(mixpanel, original);
-        
-        if (method) {
-            const char* type = method_getTypeEncoding(method);
-            
-            _original_Mixpanel_imp = class_replaceMethod(mixpanel, original,_replacement_Track_Event , type);
-        }
-        
-    }*/
-    
     return self;
 }
 
@@ -98,21 +85,21 @@ static void _replacement_Track_Event(id self, SEL _cmd, NSString* event, NSDicti
     [self.service trackEvent:event];
 }
 
+- (void) trackConversion:(PHNConversion*)conversion {
+    [self.service trackEvent:conversion];
+}
+
 - (NSURL*) processDeepLinkWithURL:(NSURL*)deepLink {
     return [self.service processDeepLinkWithURL:deepLink];
 }
 
 + (BOOL) openURL:(NSURL*)URL withCamref:(NSString*)camref {
-    return [PHNMeasurementServiceInternal openURL:URL withCamref:camref];
+    return [PHNAppClick openURL:URL withCamref:camref];
 }
 
 + (BOOL) openURL:(NSURL *)URL withAlternativeURL:(NSURL *)alternativeURL andCamref:(NSString *)camref {
-    return [PHNMeasurementServiceInternal openURL:URL withAlternativeURL:alternativeURL andCamref:camref];
+    return [PHNAppClick openURL:URL withAlternativeURL:alternativeURL andCamref:camref];
 }
-
-/*+ (BOOL) openUniversalURL:(NSURL*)URL andCamref:(NSString*)camref {
-    return [PHNMeasurementServiceInternal openUniversalURL:URL andCamref:camref];
-}*/
 
 - (void) setDelegate:(id<PHNMeasurementServiceDegelate>)delegate
 {
@@ -123,23 +110,9 @@ static void _replacement_Track_Event(id self, SEL _cmd, NSString* event, NSDicti
     }
 }
 
-- (void) setIdfa:(NSUUID *)idfa
-{
-    self.service.idfa = idfa;
-}
-
-- (NSUUID*) idfa
-{
-    return self.service.idfa;
-}
-
 - (void) setInstalled:(BOOL)installed
 {
-    self.service.installed = installed;
-}
-
-- (BOOL) installed {
-    return self.service.installed;
+    self.service.installed = @(installed);
 }
 
 #pragma mark PHNMeasurementServiceInternalDelegate

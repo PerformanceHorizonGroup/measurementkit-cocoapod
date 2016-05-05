@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, PHNMeasurementServiceStatus) {
+    PHNMeasurementServiceStatusActive,
+    PHNMeasurementServiceStatusQuerying,
+    PHNMeasurementServiceStatusInactive,
+    PHNMeasurementServiceStatusAwaitingInitialise
+};
 
 @class UIApplication;
 @class PHNEvent;
@@ -23,18 +29,20 @@
 @interface PHNMeasurementServiceInternal : NSObject
 
 @property(nonatomic, retain) id<PHNMeasurementServiceInternalDegelate> delegate;
-@property(nonatomic, retain) NSUUID* idfa;
-@property(nonatomic, assign) BOOL installed;
+
+@property(nonatomic, retain) NSNumber* installed;
+
+@property(nonatomic, readonly) NSString* advertiserID;
+@property(nonatomic, readonly) NSString* campaignID;
+
+@property(nonatomic, readonly) NSString* mobileTrackingID;
+
+@property(nonatomic, retain) PHNMeasurementServiceConfiguration* configuration;
 
 - (instancetype) initWithConfiguration:(PHNMeasurementServiceConfiguration*)config;
-
 
 - (void) startSessionWithAdvertiserID:(NSString*)advertiserID andCampaignID:(NSString*)campaignID;
 - (void) trackEvent:(PHNEvent*)event;
 - (NSURL*) processDeepLinkWithURL:(NSURL*)deepLink;
-
-+ (BOOL) openURL:(NSURL*)URL withCamref:(NSString*)camref;
-+ (BOOL) openURL:(NSURL*)URL withAlternativeURL:(NSURL*)alternativeURL andCamref:(NSString*)camref;
-/*+ (BOOL) openUniversalURL:(NSURL*)URL andCamref:(NSString*)camref;*/
 
 @end

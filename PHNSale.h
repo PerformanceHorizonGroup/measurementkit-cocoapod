@@ -61,7 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Quantity of items that make up the sale.
  */
-@property(nonatomic, assign) NSInteger quantity;
+@property(nonatomic, assign) NSNumber* quantity;
+
+- (void) setMetaItemWithKey:(NSString*)key andValue:(NSString*)value;
 
 NS_ASSUME_NONNULL_END
 

@@ -69,6 +69,25 @@ NS_ASSUME_NONNULL_BEGIN
 @property(retain, readonly) NSArray<PHNSale*>* _Nullable sales;
 @property(retain, readonly) NSString* _Nullable salesCurrency;
 
+/**
+ * country in which the event took place.
+ */
+@property(retain) NSString* _Nullable country;
+
+/**
+ * voucher code used with the event.
+ */
+@property(retain) NSString* _Nullable voucher;
+
+/**
+ * conversion reference for the event
+ */
+@property(retain) NSString* _Nullable conversionReference;
+
+/**
+ * customer reference for the event.
+ */
+@property(retain) NSString* _Nullable customerReference;
 @end
 
 NS_ASSUME_NONNULL_END

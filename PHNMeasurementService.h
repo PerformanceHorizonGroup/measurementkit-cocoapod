@@ -19,6 +19,7 @@
 #import <Foundation/Foundation.h>
 @class UIApplication;
 @class PHNEvent;
+@class PHNConversion;
 @class PHNMeasurementService;
 @class PHNMeasurementServiceConfiguration;
 
@@ -64,7 +65,6 @@
  @return the shared instance of the measurement service
  */
 + (instancetype) sharedInstance;
-
 + (void) setSharedInstance:(PHNMeasurementService*)sharedInstance;
 
 /**
@@ -90,6 +90,12 @@
 - (void) trackEvent:(PHNEvent*)event;
 
 /**
+ tracks The given conversion (P
+ @param Event - the event
+ */
+- (void) trackConversion:(PHNConversion*)conversion;
+
+/**
  captures a mobile tracking id or camref encoded in a deep link for future use by the measurement service, and returns
  the original deep-link
  @param deepLink - the deep link URL;
@@ -102,26 +108,7 @@
  */
 @property(nonatomic, retain) id<PHNMeasurementServiceDegelate> delegate;
 
-/**
- appends the given camref onto the url, then opens the url.
- @param url - given url to open
- @param camref - the campaign reference that encodes the publisher/campaign combination.
- @return false if the given URL can not be opened.
- @see UIApplication - openURL:
- @warning - Please note that the method does not check whether the given URL can be opened.
- */
-+ (BOOL) openURL:(NSURL*)URL withCamref:(NSString*)camref;
 
-/**
- attempts to open the given url, if, attempts to open the provided alternative.
- @param url - given url to open
- @param alternativeURL - alternative url
- @param camref - the campaign reference that encodes the publisher/campaign combination.
- @return false if the given URL can not be opened.
- @see UIApplication - openURL:
- @see UIApplication - canOpenURL:
- */
-+ (BOOL) openURL:(NSURL*)URL withAlternativeURL:(NSURL*)alternativeURL andCamref:(NSString*)camref;
 
 
 /**
@@ -133,7 +120,7 @@
 /**
  measurement kit will estimate installs when it allocates a mobile tracking ID.  If the application has been internally tracking versions, however, this may be more accurate than the estimate.  The following property can be used to override the estimate and generate an install conversion on registration.
  */
-@property(nonatomic, assign) BOOL installed;
+- (void) setInstalled:(BOOL)installed;
 
 @end
 
