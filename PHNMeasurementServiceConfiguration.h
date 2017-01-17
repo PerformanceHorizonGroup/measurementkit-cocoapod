@@ -20,18 +20,10 @@
 
 /**
  additional accuracy can be gained via execution of javascript in a headless webview/safariviewcontroller (Active Fingerprinting).
- In iOS 8, defaults to NO.  iOS 9>, defaults to YES.
  
- ------------------------------------------------
- Please note that these defaults have performance implications.  The webview is created on the main thread.
- ------------------------------------------------
+ Due to updates to the app developer programme license agreement, active fingerprinting is now disabled by default
  */
 @property(nonatomic, assign) BOOL activeFingerprint;
-
-/**
- *
- */
-@property(nonatomic, assign) BOOL serviceMode;
 
 + (PHNMeasurementServiceConfiguration*) defaultConfiguration;
 
