@@ -25,7 +25,7 @@ There are a number of options for integrating the iOS SDK into your project.  Th
 
 To install, add the following lines to your Podfile:
 
-	pod 'PHNMeasurementKit', '~> 0.4.5'
+	pod 'PHNMeasurementKit', '~> 0.5.0'
 
 Then use the pod install command to download and install the library in your Xcode project.
 
