@@ -25,6 +25,15 @@
  */
 @property(nonatomic, assign) BOOL activeFingerprint;
 
+/**
+ debug logging can be used to identify any issues in the configuration of MeasurementKit.
+ 
+ 
+ */
+@property(nonatomic, assign) BOOL debugLoggingActive;
+
+ 
+
 + (PHNMeasurementServiceConfiguration*) defaultConfiguration;
 
 @end

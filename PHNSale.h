@@ -63,6 +63,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, assign) NSNumber* quantity;
 
+/**
+ sets a meta item (arbitrary key value pair) for the sale
+ @param key Key to set
+ @param value Value to set
+ */
 - (void) setMetaItemWithKey:(NSString*)key andValue:(NSString*)value;
 
 NS_ASSUME_NONNULL_END

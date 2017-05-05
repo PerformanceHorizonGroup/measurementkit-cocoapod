@@ -25,7 +25,7 @@ There are a number of options for integrating the iOS SDK into your project.  Th
 
 To install, add the following lines to your Podfile:
 
-	pod 'PHNMeasurementKit', '~> 0.4.4'
+	pod 'PHNMeasurementKit', '~> 0.4.5'
 
 Then use the pod install command to download and install the library in your Xcode project.
 
@@ -170,6 +170,19 @@ All MeasurementKit methods are then available in Swift, e.g:
 
 ## FAQs
 
-* Advertiser - Where can I find my Advertiser ID and Campaign ID?
+# Advertiser - Where can I find my Advertiser ID and Campaign ID?
 
 Advertiser and Campaign ID can both be found in the Settings section of the Performance Horizon web interface.  See Admin -> Advertiser -> Advertiser ID.
+
+# Debugging issues
+
+Measurement Kit has a configuration option for extended debug logging that can be helpful in diagnosing integration issues.  To enable, use the debugLoggingActive property on PHNMeasurementServiceConfiguration.
+
+    PHNMeasurementServiceConfiguration* configuration = [PHNMeasurementServiceConfiguration defaultConfiguration];
+    //enable debug logging.
+    configuration.debugLoggingActive = YES;
+
+    PHNMeasurementService* measurement = [[PHNMeasurementService alloc] initWithConfiguration:configuration];
+
+    //set the shared instance for future use.
+    [PHNMeasurementService setSharedInstance:measurement];

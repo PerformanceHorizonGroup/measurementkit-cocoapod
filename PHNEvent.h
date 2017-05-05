@@ -88,6 +88,20 @@ NS_ASSUME_NONNULL_BEGIN
  * customer reference for the event.
  */
 @property(retain) NSString* _Nullable customerReference;
+
+/**
+ * customer type for the event.
+ */
+@property(retain) NSString* _Nullable customerType;
+
+/**
+ sets a meta item (arbitrary key value pair) for the event
+ @param key Key to set
+ @param value Value to set
+ */
+- (void) setMetaItemWithKey:(NSString*)key andValue:(NSString*)value;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
