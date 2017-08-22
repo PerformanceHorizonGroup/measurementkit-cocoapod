@@ -1,5 +1,3 @@
-![PHG Icon](http://performancehorizon.com/img/logo-on-white.svg)
-
 # Measurement Kit iOS SDK (BETA)
 ## Overview
 
@@ -25,7 +23,7 @@ There are a number of options for integrating the iOS SDK into your project.  Th
 
 To install, add the following lines to your Podfile:
 
-	pod 'PHNMeasurementKit', '~> 0.4.6'
+	pod 'PHNMeasurementKit', '~> 0.5.0'
 
 Then use the pod install command to download and install the library in your Xcode project.
 
@@ -154,13 +152,13 @@ The `currency` parameter is a ISO 4217 currency code.  (eg, USD, GBP)
 
 ## Testing
 
-MeasurementKit checks for affiliate activity on first launch. If there's no prior activity, it will be disabled for future launches. If you're testing an integration, you may wish to reset it so that it will check for affiliate activity on each launch. You can do this with the clearMeasurementServiceIDs method on MeasurementService. 
+MeasurementKit checks for affiliate activity on first launch. If there's no prior activity, it will be disabled for future launches. If you're testing an integration, you may wish to reset it so that it will check for affiliate activity on each launch. You can do this with the clearMeasurementServiceIDs method on MeasurementService.
 
 	NSString* phg_advertiser_id = @"advertiser_id";
 	NSString* phg_campaign_id = @"campaign_to_be_tracked";
 
 	[[PHNMeasurementService sharedInstance] clearMeasurementServiceIDs];
-	[[PHNMeasurementService sharedInstance] startSessionWithAdvertiserID:phg_advertiser_id andCampaignID:phg_campaign_id]; 
+	[[PHNMeasurementService sharedInstance] startSessionWithAdvertiserID:phg_advertiser_id andCampaignID:phg_campaign_id];
 
 
 ## Swift
