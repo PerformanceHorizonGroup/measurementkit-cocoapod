@@ -45,4 +45,6 @@ typedef NS_ENUM(NSUInteger, PHNMeasurementServiceStatus) {
 - (void) trackEvent:(PHNEvent*)event;
 - (NSURL*) processDeepLinkWithURL:(NSURL*)deepLink;
 
+- (void) clearMeasurementServiceIDs;
+
 @end

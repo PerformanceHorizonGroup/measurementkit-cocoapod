@@ -110,6 +110,10 @@ static void _replacement_Track_Event(id self, SEL _cmd, NSString* event, NSDicti
     }
 }
 
+- (void) clearMeasurementServiceIDs {
+    [self.service clearMeasurementServiceIDs];
+}
+
 - (void) setInstalled:(BOOL)installed
 {
     self.service.installed = @(installed);

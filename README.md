@@ -25,7 +25,7 @@ There are a number of options for integrating the iOS SDK into your project.  Th
 
 To install, add the following lines to your Podfile:
 
-	pod 'PHNMeasurementKit', '~> 0.4.5'
+	pod 'PHNMeasurementKit', '~> 0.4.6'
 
 Then use the pod install command to download and install the library in your Xcode project.
 
@@ -152,6 +152,17 @@ The `currency` parameter is a ISO 4217 currency code.  (eg, USD, GBP)
 
 `sku` and `quantity` are optional sales parameters.
 
+## Testing
+
+MeasurementKit checks for affiliate activity on first launch. If there's no prior activity, it will be disabled for future launches. If you're testing an integration, you may wish to reset it so that it will check for affiliate activity on each launch. You can do this with the clearMeasurementServiceIDs method on MeasurementService. 
+
+	NSString* phg_advertiser_id = @"advertiser_id";
+	NSString* phg_campaign_id = @"campaign_to_be_tracked";
+
+	[[PHNMeasurementService sharedInstance] clearMeasurementServiceIDs];
+	[[PHNMeasurementService sharedInstance] startSessionWithAdvertiserID:phg_advertiser_id andCampaignID:phg_campaign_id]; 
+
+
 ## Swift
 
 Measurement Kit is compatable with Swift, please ensure you add `use_frameworks!` in your podfile.
@@ -160,7 +171,7 @@ Measurement Kit is compatable with Swift, please ensure you add `use_frameworks!
 
 	target 'Exactview' do
 
-		pod 'PHNMeasurementKit', '~> 0.4'
+		pod 'PHNMeasurementKit', '~> 0.4.6'
 
 	end
 

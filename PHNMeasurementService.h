@@ -108,19 +108,14 @@
  */
 @property(nonatomic, retain) id<PHNMeasurementServiceDegelate> delegate;
 
-
-
-
-/**
- opens the given url, with universal behaviour.  Please note that universal links must be configured with
- the measurementKit API, and in your application.  (See Universal link guide)
-
-+ (BOOL) openUniversalURL:(NSURL*)URL withAlternativeURL:(NSURL*)alternativeURL andCamref:(NSString*)camref;*/
-
 /**
  measurement kit will estimate installs when it allocates a mobile tracking ID.  If the application has been internally tracking versions, however, this may be more accurate than the estimate.  The following property can be used to override the estimate and generate an install conversion on registration.
  */
 - (void) setInstalled:(BOOL)installed;
 
+/**
+ For testing integrations.  Will reset the state of measurement kit, so it will check for affiliate activity next time startSessionWithAdvertiserID:andCampaignID is called
+ */
+- (void) clearMeasurementServiceIDs;
 @end
 
