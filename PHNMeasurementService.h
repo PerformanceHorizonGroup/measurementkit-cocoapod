@@ -85,13 +85,13 @@
 
 /**
  tracks The given event
- @param Event - the event
+ @param event - the event
  */
 - (void) trackEvent:(PHNEvent*)event;
 
 /**
  tracks The given conversion (P
- @param Event - the event
+ @param conversion - the event
  */
 - (void) trackConversion:(PHNConversion*)conversion;
 
