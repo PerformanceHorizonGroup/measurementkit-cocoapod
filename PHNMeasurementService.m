@@ -93,13 +93,13 @@ static void _replacement_Track_Event(id self, SEL _cmd, NSString* event, NSDicti
     return [self.service processDeepLinkWithURL:deepLink];
 }
 
-+ (BOOL) openURL:(NSURL*)URL withCamref:(NSString*)camref {
+/*+ (BOOL) openURL:(NSURL*)URL withCamref:(NSString*)camref {
     return [PHNAppClick openURL:URL withCamref:camref];
 }
 
 + (BOOL) openURL:(NSURL *)URL withAlternativeURL:(NSURL *)alternativeURL andCamref:(NSString *)camref {
     return [PHNAppClick openURL:URL withAlternativeURL:alternativeURL andCamref:camref];
-}
+}*/
 
 - (void) setDelegate:(id<PHNMeasurementServiceDegelate>)delegate
 {
